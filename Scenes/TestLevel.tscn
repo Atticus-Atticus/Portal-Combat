@@ -1,13 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://i12xgox118vy"]
+[gd_scene load_steps=9 format=3 uid="uid://i12xgox118vy"]
 
 [ext_resource type="Script" path="res://Scripts/player_controls_script.gd" id="1_lc62b"]
 [ext_resource type="Texture2D" uid="uid://b1dycvt76lblu" path="res://icon.svg" id="2_psq52"]
+[ext_resource type="Script" path="res://Scripts/leftportscript.gd" id="3_wygb7"]
+[ext_resource type="Script" path="res://Scripts/Rightportscript.gd" id="4_0se4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcfyn"]
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1le7"]
 size = Vector2(53, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hado"]
+size = Vector2(199, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wal1i"]
+size = Vector2(201, 20)
 
 [node name="Node2D" type="Node2D"]
 
@@ -32,3 +40,24 @@ shape = SubResource("RectangleShape2D_j1le7")
 position = Vector2(1, 0)
 scale = Vector2(0.429688, 0.429688)
 texture = ExtResource("2_psq52")
+
+[node name="Leftport" type="Area2D" parent="."]
+position = Vector2(142, 264)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leftport"]
+position = Vector2(-1.00012, 15)
+shape = SubResource("RectangleShape2D_0hado")
+script = ExtResource("3_wygb7")
+
+[node name="Rightport" type="Area2D" parent="."]
+position = Vector2(602, 157)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rightport"]
+position = Vector2(0, 47)
+shape = SubResource("RectangleShape2D_wal1i")
+script = ExtResource("4_0se4o")
+
+[connection signal="body_entered" from="Leftport" to="Leftport/CollisionShape2D" method="_on_leftport_body_entered"]
+[connection signal="body_entered" from="Rightport" to="Rightport/CollisionShape2D" method="_on_rightport_body_entered"]

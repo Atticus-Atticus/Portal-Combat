@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var SPEED = 400
 @export var ACCEL = 100
-@export var FRCTION = 3
+@export var FRCTION = 8
 
 func _physics_process(delta: float) -> void:
 	var input_vector = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
