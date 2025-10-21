@@ -1,8 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cuq0ca686uv0l"]
+[gd_scene load_steps=4 format=3 uid="uid://cuq0ca686uv0l"]
 
 [ext_resource type="Texture2D" uid="uid://cu3mbypulpdr3" path="res://NPCs/EnemyPlaceHolder.png" id="1_5bf7h"]
+[ext_resource type="Script" path="res://Scripts/enemy_AI.gd" id="1_ehxeh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_corci"]
+radius = 39.0
 
 [node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_ehxeh")
 
 [node name="EnemyPlaceHolder" type="Sprite2D" parent="."]
 texture = ExtResource("1_5bf7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("CircleShape2D_corci")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 40.0
+target_desired_distance = 20.0
+path_postprocessing = 1
+debug_enabled = true
