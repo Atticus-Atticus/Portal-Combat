@@ -12,5 +12,8 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(target_velocity, ACCEL * delta)
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, FRCTION * delta)
-		
+	
 	move_and_slide()
+
+# so, Mort got us into a fucking car wreck
+# and now I can't move it move it anymore!

@@ -123,3 +123,8 @@ func _shoot_projectile(dir: Vector2):
 	p.rotation = dir.angle()
 	if p.has_method("set"):
 		p.set("velocity", dir * 400.0)
+
+
+# Daisy Daisy
+
+# There is no I in this AI

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1gojkseok8f7"]
+
+[ext_resource type="Shader" path="res://pixel_shader_test.gdshader" id="1_qll30"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_roone"]
+shader = ExtResource("1_qll30")
+shader_parameter/pixelation = 0.01
+shader_parameter/opacity = 1.0
+
+[node name="PixelShader" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_roone")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
