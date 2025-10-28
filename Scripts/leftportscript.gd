@@ -12,17 +12,20 @@ func _process(delta: float) -> void:
 
 
 func _on_leftport_body_entered(body: Node2D) -> void:
-	body.position = $"../../Rightport".position
-	print(round($"../../Rightport".rotation_degrees - $"..".rotation_degrees   ))
-
-	if round($"../../Rightport".rotation_degrees - $"..".rotation_degrees) / 90  == 3:
-		body.velocity.x = - body.velocity.y
-		body.velocity.y = - body.velocity.x 
-	elif round($"../../Rightport".rotation_degrees - $"..".rotation_degrees) / 90 == 1:
-		body.velocity.x = body.velocity.y
-		body.velocity.y = body.velocity.x
-	elif round($"../../Rightport".rotation_degrees - $"..".rotation_degrees) / 90 == 2:
-		body.velocity.x = - body.velocity.x
-		body.velocity.y = - body.velocity.y 
+	var xtemp : float
+	var ytemp : float
+	var lefttemp : float
+	
+	ytemp = $"../../Rightport".position.y - ((sqrt(pow(body.position.y - $"..".position.y,2) + pow(body.position.x - $"..".position.x,2))) * sin($"../../Rightport".rotation))
+	xtemp = $"../../Rightport".position.x - ((sqrt(pow(body.position.y - $"..".position.y,2) + pow(body.position.x - $"..".position.x,2))) * cos($"../../Rightport".rotation))
+	body.position.x = xtemp
+	body.position.y = ytemp
+	
+	
+	ytemp = ((sqrt(pow(body.velocity.x,2) + pow(body.velocity.y,2))) * sin($"../../Rightport".rotation - (PI / 2)))
+	xtemp =  ((sqrt(pow(body.velocity.x,2) + pow(body.velocity.y,2))) * cos($"../../Rightport".rotation - (PI / 2)))
+	body.velocity.x = xtemp
+	body.velocity.y =  ytemp
+	
 	
 	pass # Replace with function body.

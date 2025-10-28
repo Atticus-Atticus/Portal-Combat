@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://i12xgox118vy"]
+[gd_scene load_steps=11 format=3 uid="uid://i12xgox118vy"]
 
 [ext_resource type="Script" path="res://Scripts/player_controls_script.gd" id="1_lc62b"]
 [ext_resource type="Texture2D" uid="uid://b1dycvt76lblu" path="res://icon.svg" id="2_psq52"]
 [ext_resource type="Script" path="res://Scripts/leftportscript.gd" id="3_wygb7"]
 [ext_resource type="Script" path="res://Scripts/Rightportscript.gd" id="4_0se4o"]
+[ext_resource type="Texture2D" uid="uid://l0t8xiw70xma" path="res://Temp Textures/TempPurple.png" id="4_c5qg2"]
+[ext_resource type="Texture2D" uid="uid://c2rcdbe07c4xw" path="res://Temp Textures/TempTextureBlue.png" id="6_gj50w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcfyn"]
 size = Vector2(128, 128)
@@ -42,22 +44,32 @@ scale = Vector2(0.429688, 0.429688)
 texture = ExtResource("2_psq52")
 
 [node name="Leftport" type="Area2D" parent="."]
-position = Vector2(142, 264)
-rotation = 1.5708
+position = Vector2(249, 391)
+rotation = 0.253073
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leftport"]
-position = Vector2(-1.00012, 15)
+position = Vector2(-100, 0)
 shape = SubResource("RectangleShape2D_0hado")
 script = ExtResource("3_wygb7")
 
+[node name="Sprite2D" type="Sprite2D" parent="Leftport"]
+position = Vector2(-99, 6.00036)
+scale = Vector2(0.326379, -0.0289205)
+texture = ExtResource("4_c5qg2")
+
 [node name="Rightport" type="Area2D" parent="."]
-position = Vector2(602, 157)
-rotation = 3.14159
+position = Vector2(788, 394)
+rotation = 2.27067
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rightport"]
-position = Vector2(0, 47)
+position = Vector2(-100, 0)
 shape = SubResource("RectangleShape2D_wal1i")
 script = ExtResource("4_0se4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rightport"]
+position = Vector2(-101.289, 4.88832)
+scale = Vector2(0.165329, 0.0223126)
+texture = ExtResource("6_gj50w")
 
 [connection signal="body_entered" from="Leftport" to="Leftport/CollisionShape2D" method="_on_leftport_body_entered"]
 [connection signal="body_entered" from="Rightport" to="Rightport/CollisionShape2D" method="_on_rightport_body_entered"]

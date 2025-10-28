@@ -14,16 +14,5 @@ func _process(delta: float) -> void:
 
 
 func _on_rightport_body_entered(body: Node2D) -> void:
-	body.position = $"../../Leftport".position
-
-
-	if round($"..".rotation_degrees - $"../../Leftport".rotation_degrees) / 90  == 3:
-		body.velocity.x = - body.velocity.y
-		body.velocity.y = - body.velocity.x 
-	elif round($"..".rotation_degrees - $"../../Leftport".rotation_degrees) / 90 == 1:
-		body.velocity.x = body.velocity.y
-		body.velocity.y = body.velocity.x
-	elif round($"..".rotation_degrees - $"../../Leftport".rotation_degrees) / 90 == 2:
-		body.velocity.x = - body.velocity.x
-		body.velocity.y = - body.velocity.y 
+	pass
 	
