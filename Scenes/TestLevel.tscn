@@ -45,7 +45,7 @@ texture = ExtResource("2_psq52")
 
 [node name="Leftport" type="Area2D" parent="."]
 position = Vector2(249, 391)
-rotation = 0.253073
+rotation = 0.4892
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leftport"]
 position = Vector2(-100, 0)
@@ -59,7 +59,7 @@ texture = ExtResource("4_c5qg2")
 
 [node name="Rightport" type="Area2D" parent="."]
 position = Vector2(788, 394)
-rotation = 2.27067
+rotation = 2.36667
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rightport"]
 position = Vector2(-100, 0)
