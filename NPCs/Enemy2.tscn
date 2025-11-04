@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuq0ca686uv0l"]
+[gd_scene load_steps=4 format=3 uid="uid://6w5y140251fa"]
 
-[ext_resource type="Texture2D" uid="uid://cu3mbypulpdr3" path="res://NPCs/EnemyPlaceHolder.png" id="1_5bf7h"]
-[ext_resource type="Script" path="res://Scripts/enemy_AI.gd" id="1_ehxeh"]
+[ext_resource type="Script" path="res://Scripts/enemy_AI_shotgun.gd" id="1_gtqip"]
+[ext_resource type="Texture2D" uid="uid://cu3mbypulpdr3" path="res://NPCs/EnemyPlaceHolder.png" id="2_5jg0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_corci"]
 radius = 39.0
 
-[node name="Enemy-Gatlin" type="CharacterBody2D"]
-script = ExtResource("1_ehxeh")
+[node name="Enemy-Shotgun" type="CharacterBody2D"]
+script = ExtResource("1_gtqip")
 
 [node name="EnemyPlaceHolder" type="Sprite2D" parent="."]
-texture = ExtResource("1_5bf7h")
+texture = ExtResource("2_5jg0p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
@@ -23,8 +23,8 @@ path_postprocessing = 1
 debug_enabled = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.0
+offset_left = -33.0
 offset_top = -71.0
-offset_right = 23.0
+offset_right = 32.0
 offset_bottom = -48.0
-text = "Gatlin"
+text = "Shotgun"

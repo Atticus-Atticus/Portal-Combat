@@ -9,24 +9,22 @@ extends CharacterBody2D
 @export var wander_radius: float = 300.0
 @export var wait_time: float = 1.0
 
-@export var detection_range: float = 450.0
-@export var desired_range: float = 300.0
-@export var range_tolerance: float = 60.0
+@export var detection_range: float = 2000.0
+@export var sniper_interval: float = 2.0
+@export var sniper_waver: float = 0.25
 
-@export var shoot_interval: float = 0.20
-@export var shoot_jitter: float = 0.08
+@export var sniper_speed: float = 1400.0
+@export var aim_lead: float = 0.6
 
 var waiting := false
 var in_combat := false
-var time_since_shot := 0.0
-var next_shot_at := 0.0
+var time_since_shot: float = 0.0
 
-func _ready():
+func _ready() -> void:
 	randomize()
 	pick_new_destination()
-	next_shot_at = shoot_interval + randf() * shoot_jitter
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if in_combat:
 		_handle_combat(delta)
 	else:
@@ -34,14 +32,15 @@ func _physics_process(delta):
 
 	_detect_player()
 
-func _detect_player():
+# --- Detection ---
+func _detect_player() -> void:
 	if player == null or !is_instance_valid(player):
 		in_combat = false
 		return
 
 	var to_player: Vector2 = player.global_position - global_position
 	var distance: float = to_player.length()
-	var seen := _has_line_of_sight_to_player()
+	var seen: bool = _has_line_of_sight_to_player()
 
 	if seen and distance <= detection_range:
 		in_combat = true
@@ -65,7 +64,8 @@ func _has_line_of_sight_to_player() -> bool:
 		return true
 	return hit.has("collider") and hit["collider"] == player
 
-func _handle_wandering(_delta):
+# --- Wandering ---
+func _handle_wandering(_delta: float) -> void:
 	if waiting:
 		return
 	var next_point: Vector2 = agent.get_next_path_position()
@@ -75,7 +75,7 @@ func _handle_wandering(_delta):
 	if agent.is_navigation_finished():
 		_start_wait_timer()
 
-func pick_new_destination():
+func pick_new_destination() -> void:
 	var random_offset := Vector2(
 		randf_range(-wander_radius, wander_radius),
 		randf_range(-wander_radius, wander_radius)
@@ -83,49 +83,56 @@ func pick_new_destination():
 	var new_target := global_position + random_offset
 	agent.set_target_position(new_target)
 
-func _start_wait_timer():
+func _start_wait_timer() -> void:
 	waiting = true
 	velocity = Vector2.ZERO
 	await get_tree().create_timer(wait_time).timeout
 	waiting = false
 	pick_new_destination()
 
-func _handle_combat(delta):
+func _handle_combat(delta: float) -> void:
 	if player == null or !is_instance_valid(player):
 		in_combat = false
 		return
 
 	var to_player: Vector2 = player.global_position - global_position
-	var distance: float = to_player.length()
 	var facing: Vector2 = to_player.normalized()
 
-	var min_range: float = max(0.0, desired_range - range_tolerance)
-	var max_range: float = desired_range + range_tolerance
-
-
-	var move_vec := Vector2.ZERO
-
-	if distance < min_range:
-		move_vec = (-facing) * move_speed
-
-	elif distance <= max_range:
-		var strafe := facing.orthogonal().rotated(randf_range(-0.35, 0.35)).normalized()
-		move_vec = strafe * (move_speed * 0.7)
-
-	else:
-		var light_strafe := facing.orthogonal().rotated(randf_range(-0.25, 0.25)).normalized()
-		move_vec = light_strafe * (move_speed * 0.35)
-
-	velocity = move_vec
+	var sway: Vector2 = facing.orthogonal().rotated(randf_range(-0.2, 0.2)).normalized() * (move_speed * sniper_waver)
+	velocity = sway
 	move_and_slide()
 
 	time_since_shot += delta
-	if time_since_shot >= next_shot_at and _has_line_of_sight_to_player():
-		_shoot_projectile(facing)
+	if time_since_shot >= sniper_interval and _has_line_of_sight_to_player():
+		var fire_dir: Vector2 = _get_sniper_direction(facing)
+		_shoot_sniper(fire_dir)
 		time_since_shot = 0.0
-		next_shot_at = shoot_interval + randf() * shoot_jitter
 
-func _shoot_projectile(dir: Vector2):
+func _get_sniper_direction(default_dir: Vector2) -> Vector2:
+	if player is CharacterBody2D:
+		var cb := player as CharacterBody2D
+		var rel: Vector2 = cb.global_position - global_position
+		var v: Vector2 = cb.velocity
+		var a: float = v.dot(v) - sniper_speed * sniper_speed
+		var b: float = 2.0 * rel.dot(v)
+		var c: float = rel.dot(rel)
+		var t: float = 0.0
+		var disc: float = b*b - 4.0*a*c
+		if disc > 0.0 and abs(a) > 0.0001:
+			var sqrt_disc: float = sqrt(disc)
+			var t1: float = (-b - sqrt_disc) / (2.0 * a)
+			var t2: float = (-b + sqrt_disc) / (2.0 * a)
+			var cand: float = min(t1, t2)
+			if cand <= 0.0:
+				cand = max(t1, t2)
+			if cand > 0.0:
+				t = cand
+		if t > 0.0:
+			var aim_at: Vector2 = cb.global_position + v * t * aim_lead
+			return (aim_at - global_position).normalized()
+	return default_dir
+
+func _shoot_sniper(dir: Vector2) -> void:
 	if projectile_scene == null:
 		return
 	var p := projectile_scene.instantiate()
@@ -135,4 +142,4 @@ func _shoot_projectile(dir: Vector2):
 		n2d.global_position = global_position
 		n2d.rotation = dir.angle()
 	if p.has_method("set"):
-		p.set("velocity", dir * 500.0)
+		p.set("velocity", dir * sniper_speed)
