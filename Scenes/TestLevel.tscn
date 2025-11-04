@@ -8,26 +8,33 @@
 [ext_resource type="Texture2D" uid="uid://c2rcdbe07c4xw" path="res://Temp Textures/TempTextureBlue.png" id="6_gj50w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcfyn"]
-size = Vector2(128, 128)
+size = Vector2(297.81, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j1le7"]
 size = Vector2(53, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hado"]
-size = Vector2(199, 20)
+size = Vector2(200, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wal1i"]
-size = Vector2(201, 20)
+size = Vector2(200, 10)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(431, 212)
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(893, 727)
+rotation = 0.201575
+scale = Vector2(1.61031, 0.307326)
+metadata/Portalable = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-149.271, 70.3763)
+scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_dcfyn")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+[node name="Icon" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-148.481, 66.5353)
+scale = Vector2(2.30305, 1)
 texture = ExtResource("2_psq52")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]

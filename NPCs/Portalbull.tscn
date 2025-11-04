@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvq23rds4rkuh"]
+
+[ext_resource type="Texture2D" uid="uid://cyy5uemdlxc5e" path="res://Temp Textures/TempTextureRed.png" id="1_nuv1k"]
+[ext_resource type="Script" path="res://Scripts/Portalbullet.gd" id="1_p43m7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0i2f4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_50ib4"]
+radius = 13.0
+
+[node name="Portalbull" type="CharacterBody2D"]
+script = ExtResource("1_p43m7")
+metadata/Leftportal = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01496, 0.0300692)
+texture = ExtResource("1_nuv1k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0i2f4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 0.876936
+scale = Vector2(0.908517, 0.916719)
+shape = SubResource("CircleShape2D_50ib4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
