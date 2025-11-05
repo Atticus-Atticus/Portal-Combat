@@ -1,80 +1,82 @@
-[gd_scene load_steps=8 format=3 uid="uid://i12xgox118vy"]
+[gd_scene load_steps=11 format=3 uid="uid://i12xgox118vy"]
 
-[ext_resource type="PackedScene" uid="uid://ct3wrf4v06xlx" path="res://Player/player.tscn" id="2_0ko54"]
+[ext_resource type="Script" path="res://Scripts/player_controls_script.gd" id="1_lc62b"]
 [ext_resource type="Texture2D" uid="uid://b1dycvt76lblu" path="res://icon.svg" id="2_psq52"]
-[ext_resource type="PackedScene" uid="uid://cuq0ca686uv0l" path="res://NPCs/Enemy.tscn" id="3_fs1s5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_egk5i"]
-size = Vector2(55.0056, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6s0x"]
-size = Vector2(20, 1080.5)
+[ext_resource type="Script" path="res://Scripts/leftportscript.gd" id="3_wygb7"]
+[ext_resource type="Script" path="res://Scripts/Rightportscript.gd" id="4_0se4o"]
+[ext_resource type="Texture2D" uid="uid://l0t8xiw70xma" path="res://Temp Textures/TempPurple.png" id="4_c5qg2"]
+[ext_resource type="Texture2D" uid="uid://c2rcdbe07c4xw" path="res://Temp Textures/TempTextureBlue.png" id="6_gj50w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcfyn"]
-size = Vector2(128, 128)
+size = Vector2(297.81, 128)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_i0qel"]
-vertices = PackedVector2Array(1494.21, 867.938, 1895.09, 1052.02, 24.0469, 1056.97, 775.289, 872.063, 1901.9, 339.039, 1485.79, 473.961, 714.258, 344.039, 763.703, 477.039, 709.727, 172.063, 438.617, 287, 428.422, 117.031, 29.9375, 21.0078, 1895.06, 22.9766, 1895.93, 165.047, 131.203, 115.961, 127.797, 287)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 6, 9, 10), PackedInt32Array(11, 12, 13, 8, 10), PackedInt32Array(11, 10, 14), PackedInt32Array(2, 11, 14, 15), PackedInt32Array(7, 3, 2, 15, 9, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(20, 11, 1905, 13, 1906, 175, 720, 182, 724, 334, 1912, 329, 1905, 1062, 14, 1067), PackedVector2Array(141, 126, 138, 277, 428, 277, 419, 127), PackedVector2Array(774, 487, 785, 862, 1484, 858, 1476, 484)])
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1le7"]
+size = Vector2(53, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hado"]
+size = Vector2(200, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wal1i"]
+size = Vector2(200, 10)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-98, 74)
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(893, 727)
+rotation = 0.201575
+scale = Vector2(1.61031, 0.307326)
+metadata/Portalable = true
 
-[node name="NorthWall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1058.2, -84)
-scale = Vector2(35.64, 1)
-shape = SubResource("RectangleShape2D_egk5i")
-
-[node name="EastWall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2028, 466)
-shape = SubResource("RectangleShape2D_i6s0x")
-
-[node name="SouthWall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1058, 1016)
-scale = Vector2(35.64, 1)
-shape = SubResource("RectangleShape2D_egk5i")
-
-[node name="WestWall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(88, 465.75)
-shape = SubResource("RectangleShape2D_i6s0x")
-
-[node name="TempBox" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(382, 130)
-scale = Vector2(2, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-149.271, 70.3763)
+scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_dcfyn")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D/TempBox"]
+[node name="Icon" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-148.481, 66.5353)
+scale = Vector2(2.30305, 1)
 texture = ExtResource("2_psq52")
 
-[node name="TempBox2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1221, 596)
-scale = Vector2(5.24083, 2.65521)
-shape = SubResource("RectangleShape2D_dcfyn")
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(143, 118)
+script = ExtResource("1_lc62b")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D/TempBox2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_j1le7")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(1, 0)
+scale = Vector2(0.429688, 0.429688)
 texture = ExtResource("2_psq52")
 
-[node name="TempBox3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1444, 182)
-scale = Vector2(9.55917, 0.992059)
-shape = SubResource("RectangleShape2D_dcfyn")
+[node name="Leftport" type="Area2D" parent="."]
+position = Vector2(249, 391)
+rotation = 0.4892
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D/TempBox3"]
-texture = ExtResource("2_psq52")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Leftport"]
+position = Vector2(-100, 0)
+shape = SubResource("RectangleShape2D_0hado")
+script = ExtResource("3_wygb7")
 
-[node name="Player" parent="." instance=ExtResource("2_0ko54")]
-position = Vector2(73, 74)
+[node name="Sprite2D" type="Sprite2D" parent="Leftport"]
+position = Vector2(-99, 6.00036)
+scale = Vector2(0.326379, -0.0289205)
+texture = ExtResource("4_c5qg2")
 
-[node name="Enemy" parent="." instance=ExtResource("3_fs1s5")]
-position = Vector2(1728, 772)
-player_path = NodePath("../Player")
+[node name="Rightport" type="Area2D" parent="."]
+position = Vector2(788, 394)
+rotation = 2.36667
 
-[node name="Enemy2" parent="." instance=ExtResource("3_fs1s5")]
-position = Vector2(1643, 96)
-player_path = NodePath("../Player")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rightport"]
+position = Vector2(-100, 0)
+shape = SubResource("RectangleShape2D_wal1i")
+script = ExtResource("4_0se4o")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_i0qel")
+[node name="Sprite2D" type="Sprite2D" parent="Rightport"]
+position = Vector2(-101.289, 4.88832)
+scale = Vector2(0.165329, 0.0223126)
+texture = ExtResource("6_gj50w")
+
+[connection signal="body_entered" from="Leftport" to="Leftport/CollisionShape2D" method="_on_leftport_body_entered"]
+[connection signal="body_entered" from="Rightport" to="Rightport/CollisionShape2D" method="_on_rightport_body_entered"]
