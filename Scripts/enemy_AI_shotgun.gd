@@ -4,8 +4,10 @@ extends CharacterBody2D
 
 @export var player_path: NodePath # assign in the Inspector
 @onready var player: Node2D = get_node_or_null(player_path)
-
-@onready var projectile_scene: PackedScene = preload("res://NPCs/Projectile.tscn")
+@onready var projectile_scene: PackedScene = preload("res://NPCs/ProjectileShotgun.tscn")
+@onready var sprite = $AnimatedSprite2D
+@onready var gun = $Shutgun
+@onready var barrel = $Shutgun/Node2D
 
 @export var move_speed: float = 200.0
 @export var wander_radius: float = 300.0
@@ -28,8 +30,19 @@ var burst_cd_left: float = 0.0
 var retreat_left: float = 0.0
 
 func _ready() -> void:
+	gun.visible = false
 	randomize()
 	pick_new_destination()
+
+func _process(delta: float) -> void:
+	if player and is_instance_valid(player):
+		gun.look_at(player.global_position)
+		gun.flip_h = rotation < -PI / 2 or rotation > PI / 2
+
+	if in_combat == true:
+		gun.visible = true
+	else:
+		gun.visible = false
 
 func _physics_process(delta: float) -> void:
 	_ensure_player()
@@ -41,7 +54,6 @@ func _physics_process(delta: float) -> void:
 
 	_detect_player()
 
-	# timers
 	if burst_cd_left > 0.0:
 		burst_cd_left = max(0.0, burst_cd_left - delta)
 	if retreat_left > 0.0:
@@ -96,6 +108,7 @@ func _handle_wandering(_delta: float) -> void:
 	var direction: Vector2 = (next_point - global_position).normalized()
 	velocity = direction * move_speed
 	move_and_slide()
+	_update_directional_animation()
 	if agent.is_navigation_finished():
 		_start_wait_timer()
 
@@ -128,6 +141,7 @@ func _handle_combat(_delta: float) -> void:
 		var move_vec: Vector2 = (-facing * move_speed * retreat_speed_mult) + (strafe * move_speed * 0.3)
 		velocity = move_vec
 		move_and_slide()
+		_update_directional_animation()
 		return
 
 	if (distance > close_range) or !_has_line_of_sight_to_player():
@@ -136,6 +150,7 @@ func _handle_combat(_delta: float) -> void:
 		var advance: Vector2 = (next_point - global_position).normalized()
 		velocity = advance * move_speed
 		move_and_slide()
+		_update_directional_animation()
 		return
 
 	if burst_cd_left <= 0.0:
@@ -146,6 +161,7 @@ func _handle_combat(_delta: float) -> void:
 		var strafe2: Vector2 = facing.orthogonal().rotated(randf_range(-0.4, 0.4)).normalized()
 		velocity = strafe2 * (move_speed * 0.8)
 		move_and_slide()
+		_update_directional_animation()
 
 func _shotgun_burst(dir: Vector2) -> void:
 	if projectile_scene == null:
@@ -154,14 +170,31 @@ func _shotgun_burst(dir: Vector2) -> void:
 	for i in burst_projectiles:
 		var offset_deg: float = randf_range(-half_spread, half_spread)
 		var shoot_dir: Vector2 = dir.rotated(deg_to_rad(offset_deg)).normalized()
-		_spawn_projectile(shoot_dir)
+		_shoot_projectile(shoot_dir)
 
-func _spawn_projectile(dir: Vector2) -> void:
-	var p: Node = projectile_scene.instantiate()
+func _shoot_projectile(dir: Vector2):
+	var p := projectile_scene.instantiate()
 	get_parent().add_child(p)
 	if p is Node2D:
 		var n2d := p as Node2D
-		n2d.global_position = global_position
+		n2d.global_position = barrel.global_position
 		n2d.rotation = dir.angle()
 	if p.has_method("set"):
-		p.set("velocity", dir * pellet_speed)
+		p.set("velocity", dir * 500.0)
+	await get_tree().create_timer(0.15).timeout
+
+func _update_directional_animation() -> void:
+	if velocity.length() < 1.0:
+		sprite.play("Idle")
+		return
+
+	var dir := velocity.normalized()
+
+	if abs(dir.x) > abs(dir.y):
+		sprite.play("Side")
+		sprite.flip_h = dir.x > 0
+	else:
+		if dir.y > 0:
+			sprite.play("Front")
+		else:
+			sprite.play("Back")

@@ -3,7 +3,10 @@ extends CharacterBody2D
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @export var player_path: NodePath # assign in the Inspector
 @onready var player: Node2D = get_node_or_null(player_path)
-@onready var projectile_scene: PackedScene = preload("res://NPCs/Projectile.tscn")
+@onready var projectile_scene: PackedScene = preload("res://NPCs/ProjectileCannon.tscn")
+@onready var sprite = $AnimatedSprite2D
+@onready var gun = $Cunnon
+@onready var barrel = $Cunnon/Node2D
 
 @export var move_speed: float = 200.0
 @export var wander_radius: float = 300.0
@@ -21,8 +24,19 @@ var in_combat := false
 var time_since_shot: float = 0.0
 
 func _ready() -> void:
+	gun.visible = false
 	randomize()
 	pick_new_destination()
+
+func _process(delta: float) -> void:
+	if player and is_instance_valid(player):
+		gun.look_at(player.global_position)
+		gun.flip_h = rotation < -PI / 2 or rotation > PI / 2
+
+	if in_combat == true:
+		gun.visible = true
+	else:
+		gun.visible = false
 
 func _physics_process(delta: float) -> void:
 	if in_combat:
@@ -72,6 +86,7 @@ func _handle_wandering(_delta: float) -> void:
 	var direction: Vector2 = (next_point - global_position).normalized()
 	velocity = direction * move_speed
 	move_and_slide()
+	_update_directional_animation()
 	if agent.is_navigation_finished():
 		_start_wait_timer()
 
@@ -101,11 +116,12 @@ func _handle_combat(delta: float) -> void:
 	var sway: Vector2 = facing.orthogonal().rotated(randf_range(-0.2, 0.2)).normalized() * (move_speed * sniper_waver)
 	velocity = sway
 	move_and_slide()
+	_update_directional_animation()
 
 	time_since_shot += delta
 	if time_since_shot >= sniper_interval and _has_line_of_sight_to_player():
 		var fire_dir: Vector2 = _get_sniper_direction(facing)
-		_shoot_sniper(fire_dir)
+		_shoot_projectile(fire_dir)
 		time_since_shot = 0.0
 
 func _get_sniper_direction(default_dir: Vector2) -> Vector2:
@@ -132,14 +148,29 @@ func _get_sniper_direction(default_dir: Vector2) -> Vector2:
 			return (aim_at - global_position).normalized()
 	return default_dir
 
-func _shoot_sniper(dir: Vector2) -> void:
-	if projectile_scene == null:
-		return
+func _shoot_projectile(dir: Vector2):
 	var p := projectile_scene.instantiate()
 	get_parent().add_child(p)
 	if p is Node2D:
 		var n2d := p as Node2D
-		n2d.global_position = global_position
+		n2d.global_position = barrel.global_position
 		n2d.rotation = dir.angle()
 	if p.has_method("set"):
-		p.set("velocity", dir * sniper_speed)
+		p.set("velocity", dir * 500.0)
+	await get_tree().create_timer(0.15).timeout
+
+func _update_directional_animation() -> void:
+	if velocity.length() < 1.0:
+		sprite.play("Idle")
+		return
+
+	var dir := velocity.normalized()
+	
+	if abs(dir.x) > abs(dir.y):
+		sprite.play("Side")
+		sprite.flip_h = dir.x > 0
+	else:
+		if dir.y > 0:
+			sprite.play("Front")
+		else:
+			sprite.play("Back")

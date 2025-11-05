@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+# Please note this is not a replacement for the player script.
+# I saw that changes were being made to the original player script involing the portals.
+# I made this seperate script to prevent any overrides in the repository.
+
 @export var SPEED = 400
 @export var ACCEL = 100
 @export var FRCTION = 3

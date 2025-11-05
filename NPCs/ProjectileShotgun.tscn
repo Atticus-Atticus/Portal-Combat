@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://fxwlg10aeo05"]
+
+[ext_resource type="Script" path="res://Scripts/projectile_script.gd" id="1_m0o3v"]
+[ext_resource type="Texture2D" uid="uid://b1bo2hma7whnf" path="res://Sprites/shotB.png" id="2_jtvod"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnnec"]
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_m0o3v")
+
+[node name="ShotB" type="Sprite2D" parent="."]
+position = Vector2(0, -0.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_jtvod")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.760001)
+shape = SubResource("CircleShape2D_xnnec")
