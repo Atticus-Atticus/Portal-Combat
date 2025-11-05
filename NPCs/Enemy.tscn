@@ -1,30 +1,207 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuq0ca686uv0l"]
+[gd_scene load_steps=29 format=3 uid="uid://cuq0ca686uv0l"]
 
-[ext_resource type="Texture2D" uid="uid://cu3mbypulpdr3" path="res://NPCs/EnemyPlaceHolder.png" id="1_5bf7h"]
 [ext_resource type="Script" path="res://Scripts/enemy_AI.gd" id="1_ehxeh"]
+[ext_resource type="Texture2D" uid="uid://j02x1yqp7fqq" path="res://Sprites/gulilGun.png" id="2_2qcdv"]
+[ext_resource type="Texture2D" uid="uid://g4k0qkannkr3" path="res://NPCs/EAback.png" id="2_l11w2"]
+[ext_resource type="Texture2D" uid="uid://3gca7gej4vam" path="res://NPCs/EAdie.png" id="3_fdcm8"]
+[ext_resource type="Texture2D" uid="uid://8ut622ys016d" path="res://NPCs/EAfront.png" id="4_6rbdu"]
+[ext_resource type="Texture2D" uid="uid://l8xutukftqi6" path="res://NPCs/EAside.png" id="5_1ary0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_corci"]
-radius = 39.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfd8o"]
+atlas = ExtResource("2_l11w2")
+region = Rect2(0, 0, 200, 250)
 
-[node name="Enemy-Gatlin" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4vnl"]
+atlas = ExtResource("2_l11w2")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6di8"]
+atlas = ExtResource("2_l11w2")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iofxu"]
+atlas = ExtResource("2_l11w2")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0t7n"]
+atlas = ExtResource("3_fdcm8")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yha5u"]
+atlas = ExtResource("3_fdcm8")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ixvm"]
+atlas = ExtResource("3_fdcm8")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pyiv"]
+atlas = ExtResource("3_fdcm8")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qcrd"]
+atlas = ExtResource("3_fdcm8")
+region = Rect2(800, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iev4h"]
+atlas = ExtResource("3_fdcm8")
+region = Rect2(1000, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7emi"]
+atlas = ExtResource("3_fdcm8")
+region = Rect2(1200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x731s"]
+atlas = ExtResource("4_6rbdu")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ipy"]
+atlas = ExtResource("4_6rbdu")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqc1s"]
+atlas = ExtResource("4_6rbdu")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mc6m"]
+atlas = ExtResource("4_6rbdu")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6yqh"]
+atlas = ExtResource("4_6rbdu")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hskjd"]
+atlas = ExtResource("5_1ary0")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbyk5"]
+atlas = ExtResource("5_1ary0")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgwv0"]
+atlas = ExtResource("5_1ary0")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh0n6"]
+atlas = ExtResource("5_1ary0")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2cahx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfd8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4vnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6di8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iofxu")
+}],
+"loop": true,
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0t7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yha5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ixvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pyiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qcrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iev4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7emi")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x731s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ipy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqc1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mc6m")
+}],
+"loop": true,
+"name": &"Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6yqh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hskjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbyk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgwv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh0n6")
+}],
+"loop": true,
+"name": &"Side",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nu8pm"]
+
+[node name="Enemy-Gatlin" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ehxeh")
 
-[node name="EnemyPlaceHolder" type="Sprite2D" parent="."]
-texture = ExtResource("1_5bf7h")
+[node name="GulilGun" type="Sprite2D" parent="."]
+position = Vector2(-9.09495e-13, 24)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_2qcdv")
+offset = Vector2(560, 40)
+
+[node name="Node2D" type="Node2D" parent="GulilGun"]
+position = Vector2(1180, 40)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2cahx")
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
-shape = SubResource("CircleShape2D_corci")
+position = Vector2(0, 9)
+scale = Vector2(5.64, 8.52)
+shape = SubResource("CircleShape2D_nu8pm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 40.0
-target_desired_distance = 20.0
+target_desired_distance = 30.0
 path_postprocessing = 1
 debug_enabled = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -24.0
-offset_top = -71.0
-offset_right = 23.0
-offset_bottom = -48.0
-text = "Gatlin"

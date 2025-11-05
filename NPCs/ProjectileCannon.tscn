@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cemju5uw7pr1j"]
+
+[ext_resource type="Script" path="res://Scripts/projectile_script.gd" id="1_icsai"]
+[ext_resource type="Texture2D" uid="uid://ogy4guapnalk" path="res://Sprites/cannonB.png" id="2_i7jgj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnnec"]
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_icsai")
+
+[node name="CannonB" type="Sprite2D" parent="."]
+position = Vector2(-0.2, -0.4)
+scale = Vector2(0.07, 0.07)
+texture = ExtResource("2_i7jgj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xnnec")

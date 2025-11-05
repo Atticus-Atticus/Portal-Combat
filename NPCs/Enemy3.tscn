@@ -1,30 +1,212 @@
-[gd_scene load_steps=4 format=3 uid="uid://clw17rawom0tb"]
+[gd_scene load_steps=29 format=3 uid="uid://clw17rawom0tb"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_AI_Sniper.gd" id="1_x13py"]
-[ext_resource type="Texture2D" uid="uid://cu3mbypulpdr3" path="res://NPCs/EnemyPlaceHolder.png" id="2_5de6e"]
+[ext_resource type="Texture2D" uid="uid://cjecpjgan6phv" path="res://Sprites/cunnon.png" id="2_8n4cc"]
+[ext_resource type="Texture2D" uid="uid://klndp0lehow4" path="res://NPCs/EDback.png" id="2_ple3n"]
+[ext_resource type="Texture2D" uid="uid://dtpwhgyq3d4qj" path="res://NPCs/EDdie.png" id="3_dhk10"]
+[ext_resource type="Texture2D" uid="uid://c855b6dnmobku" path="res://NPCs/EDfront.png" id="4_al7pa"]
+[ext_resource type="Texture2D" uid="uid://cncxmg1tynf6r" path="res://NPCs/EDside.png" id="5_2mxui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtcmt"]
+atlas = ExtResource("2_ple3n")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoc4u"]
+atlas = ExtResource("2_ple3n")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh4qw"]
+atlas = ExtResource("2_ple3n")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcxto"]
+atlas = ExtResource("2_ple3n")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l50x"]
+atlas = ExtResource("3_dhk10")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do8dg"]
+atlas = ExtResource("3_dhk10")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xcmw"]
+atlas = ExtResource("3_dhk10")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syfde"]
+atlas = ExtResource("3_dhk10")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uwrg"]
+atlas = ExtResource("3_dhk10")
+region = Rect2(800, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okgu6"]
+atlas = ExtResource("3_dhk10")
+region = Rect2(1000, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceqxi"]
+atlas = ExtResource("3_dhk10")
+region = Rect2(1200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx0jd"]
+atlas = ExtResource("4_al7pa")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uihwr"]
+atlas = ExtResource("4_al7pa")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh1o0"]
+atlas = ExtResource("4_al7pa")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3allb"]
+atlas = ExtResource("4_al7pa")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy6m0"]
+atlas = ExtResource("4_al7pa")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c80go"]
+atlas = ExtResource("5_2mxui")
+region = Rect2(0, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vmpi"]
+atlas = ExtResource("5_2mxui")
+region = Rect2(200, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56hff"]
+atlas = ExtResource("5_2mxui")
+region = Rect2(400, 0, 200, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5se8a"]
+atlas = ExtResource("5_2mxui")
+region = Rect2(600, 0, 200, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxibh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtcmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoc4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh4qw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcxto")
+}],
+"loop": true,
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l50x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do8dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xcmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syfde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uwrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okgu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ceqxi")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sx0jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uihwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh1o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3allb")
+}],
+"loop": true,
+"name": &"Front",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy6m0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c80go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vmpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56hff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5se8a")
+}],
+"loop": true,
+"name": &"Side",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_corci"]
 radius = 39.0
 
-[node name="Enemy-Sniper" type="CharacterBody2D"]
+[node name="Enemy-Sniper" type="CharacterBody2D" groups=["Enemy"]]
+scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_x13py")
+detection_range = 750.0
+sniper_waver = 0.0
 
-[node name="EnemyPlaceHolder" type="Sprite2D" parent="."]
-texture = ExtResource("2_5de6e")
+[node name="Cunnon" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_8n4cc")
+offset = Vector2(330, -9.99998)
+
+[node name="Node2D" type="Node2D" parent="Cunnon"]
+position = Vector2(650, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sxibh")
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
+scale = Vector2(1.96, 2.48)
 shape = SubResource("CircleShape2D_corci")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 40.0
-target_desired_distance = 20.0
+target_desired_distance = 30.0
 path_postprocessing = 1
 debug_enabled = true
-
-[node name="Label" type="Label" parent="."]
-offset_left = -28.0
-offset_top = -69.0
-offset_right = 37.0
-offset_bottom = -46.0
-text = "Sniper"
