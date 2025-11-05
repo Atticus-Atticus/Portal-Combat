@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://ct3wrf4v06xlx"]
 
-[ext_resource type="Script" path="res://Scripts/player_controls_script.gd" id="1_cwp1e"]
+[ext_resource type="Script" path="res://Scripts/player_controls_script_no_portals.gd" id="1_pm56p"]
 [ext_resource type="Texture2D" uid="uid://ouhftufg2pbt" path="res://Player/MCback.png" id="2_lgne3"]
 [ext_resource type="Texture2D" uid="uid://cneqnk484d5rr" path="res://Player/MCdie.png" id="3_76a45"]
 [ext_resource type="Texture2D" uid="uid://634s135xff0c" path="res://Player/MCfront.png" id="4_6a4qg"]
@@ -209,7 +209,8 @@ animations = [{
 scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_cwp1e")
+script = ExtResource("1_pm56p")
+SPEED = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_m6bbu")
