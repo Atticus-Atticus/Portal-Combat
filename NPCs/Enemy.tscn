@@ -127,8 +127,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_s7emi")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -180,10 +183,11 @@ animations = [{
 [node name="Enemy-Gatlin" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ehxeh")
+shoot_interval = 0.1
 
 [node name="GulilGun" type="Sprite2D" parent="."]
-position = Vector2(-9.09495e-13, 24)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-2, 6)
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_2qcdv")
 offset = Vector2(560, 40)
 

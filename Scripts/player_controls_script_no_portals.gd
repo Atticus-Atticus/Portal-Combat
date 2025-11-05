@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var sprite = $AnimatedSprite2D
 
+var health = 3
+
 func _physics_process(delta: float) -> void:
 	var input_vector = Input.get_vector("LEFT", "RIGHT", "UP", "DOWN")
 	var target_velocity = input_vector.normalized() * SPEED
@@ -35,6 +37,7 @@ func _update_animation(input_vector: Vector2) -> void:
 			sprite.play("Front")
 		else:
 			sprite.play("Back")
+
 
 # so, Mort got us into a fucking car wreck
 # and now I can't move it move it anymore!

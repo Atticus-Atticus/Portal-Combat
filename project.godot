@@ -25,6 +25,7 @@ window/stretch/mode="viewport"
 
 Enemy=""
 Player=""
+Bullet=""
 
 [input]
 
