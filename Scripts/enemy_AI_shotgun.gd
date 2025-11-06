@@ -198,3 +198,10 @@ func _update_directional_animation() -> void:
 			sprite.play("Front")
 		else:
 			sprite.play("Back")
+
+func _death():
+	#agent.queue_free()
+	#gun.queue_free()
+	sprite.play("Death")
+	await get_tree().create_timer(2).timeout
+	queue_free()

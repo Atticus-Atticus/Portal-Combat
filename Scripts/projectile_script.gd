@@ -11,4 +11,8 @@ func _process(delta: float) -> void:
 	if lifetime <= 0:
 		queue_free()
 
-# 
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Enemy"):
+		body._death()
+	$".".queue_free()

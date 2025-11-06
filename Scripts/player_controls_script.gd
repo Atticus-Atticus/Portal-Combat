@@ -16,21 +16,9 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.lerp(Vector2.ZERO, FRCTION * delta)
 	
 	move_and_slide()
-	_update_animation(input_vector)
 
-func _update_animation(input_vector: Vector2) -> void:
-	if input_vector.length() == 0:
-		sprite.play("Idle")
-		return
-	
-	if abs(input_vector.x) > abs(input_vector.y):
-		sprite.play("Side")
-		sprite.flip_h = input_vector.x > 0
-	else:
-		if input_vector.y > 0:
-			sprite.play("Front")
-		else:
-			sprite.play("Back")
+# Code has been updated to have animations
+# Please instantiate the player scene into any levels
 
 # so, Mort got us into a fucking car wreck
 # and now I can't move it move it anymore!

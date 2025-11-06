@@ -127,8 +127,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ceqxi")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
 "speed": 5.0
 }, {
@@ -197,7 +200,7 @@ position = Vector2(650, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sxibh")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -207,6 +210,6 @@ shape = SubResource("CircleShape2D_corci")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 40.0
-target_desired_distance = 30.0
+target_desired_distance = 50.0
 path_postprocessing = 1
 debug_enabled = true
