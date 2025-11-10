@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://cj2nmi8lhg815"]
+
+[ext_resource type="PackedScene" uid="uid://ct3wrf4v06xlx" path="res://Player/player.tscn" id="1_80ipy"]
+[ext_resource type="FontFile" uid="uid://2ui370r1f7kx" path="res://Fonts/soloist1.ttf" id="2_j16ck"]
+[ext_resource type="Texture2D" uid="uid://cp4qsejc1s120" path="res://Concept Art/ConceptArt1.jpg" id="3_kxx3y"]
+[ext_resource type="Texture2D" uid="uid://2ggtd4ho35q2" path="res://Concept Art/ConceptArt2.png" id="4_rg384"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d55pg"]
+size = Vector2(55.0056, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ri7f8"]
+size = Vector2(20, 1080.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_851df"]
+font = ExtResource("2_j16ck")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_flwwj"]
+font = ExtResource("2_j16ck")
+font_size = 20
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_80ipy")]
+position = Vector2(578, 148)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-95, 74)
+collision_layer = 15
+collision_mask = 15
+
+[node name="NorthWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1058.2, -84)
+scale = Vector2(35.64, 1)
+shape = SubResource("RectangleShape2D_d55pg")
+
+[node name="EastWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2027, 467)
+shape = SubResource("RectangleShape2D_ri7f8")
+
+[node name="SouthWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1060, 1016)
+scale = Vector2(35.64, 1)
+shape = SubResource("RectangleShape2D_d55pg")
+
+[node name="WestWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(86, 459)
+shape = SubResource("RectangleShape2D_ri7f8")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 18.0
+offset_right = 759.0
+offset_bottom = 83.0
+text = "This Scene shows the all of the sprites and concept art for our game."
+label_settings = SubResource("LabelSettings_851df")
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 93.0
+offset_right = 318.0
+offset_bottom = 140.0
+text = "Press \"ESC\" to return to Main Menu"
+label_settings = SubResource("LabelSettings_flwwj")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ConceptArt1" type="Sprite2D" parent="."]
+position = Vector2(348, 649)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_kxx3y")
+
+[node name="ConceptArt2" type="Sprite2D" parent="."]
+position = Vector2(1073, 826)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_rg384")

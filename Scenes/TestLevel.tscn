@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://i12xgox118vy"]
+[gd_scene load_steps=17 format=3 uid="uid://i12xgox118vy"]
 
 [ext_resource type="Script" path="res://Scripts/player_controls_script.gd" id="1_lc62b"]
+[ext_resource type="Script" path="res://Scripts/test_level_script.gd" id="1_s4nkf"]
+[ext_resource type="Texture2D" uid="uid://d3ugvcepbahco" path="res://Background/LevelA1.jpg" id="2_jtlxk"]
 [ext_resource type="Texture2D" uid="uid://b1dycvt76lblu" path="res://icon.svg" id="2_psq52"]
 [ext_resource type="Script" path="res://Scripts/leftportscript.gd" id="3_wygb7"]
 [ext_resource type="Script" path="res://Scripts/Rightportscript.gd" id="4_0se4o"]
 [ext_resource type="Texture2D" uid="uid://l0t8xiw70xma" path="res://Temp Textures/TempPurple.png" id="4_c5qg2"]
 [ext_resource type="Texture2D" uid="uid://c2rcdbe07c4xw" path="res://Temp Textures/TempTextureBlue.png" id="6_gj50w"]
+[ext_resource type="FontFile" uid="uid://2ui370r1f7kx" path="res://Fonts/soloist1.ttf" id="9_8uwvd"]
+[ext_resource type="Texture2D" uid="uid://cgmrib64fhjnu" path="res://Temp Textures/66831.png" id="10_tlr2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcfyn"]
 size = Vector2(500, 30)
@@ -19,7 +23,19 @@ size = Vector2(200, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wal1i"]
 size = Vector2(200, 10)
 
+[sub_resource type="LabelSettings" id="LabelSettings_cp26v"]
+font = ExtResource("9_8uwvd")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_x6bkg"]
+font = ExtResource("9_8uwvd")
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_s4nkf")
+
+[node name="LevelA1" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_jtlxk")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(893, 727)
@@ -77,5 +93,48 @@ position = Vector2(-101.289, 4.88832)
 scale = Vector2(0.165329, 0.0223126)
 texture = ExtResource("6_gj50w")
 
+[node name="Button" type="Button" parent="."]
+offset_left = 1205.0
+offset_top = 43.0
+offset_right = 1503.0
+offset_bottom = 148.0
+text = "Click Here to see Enemy AIs"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1084.0
+offset_top = 610.0
+offset_right = 1801.0
+offset_bottom = 1147.0
+text = "This Scene shows the portal mechanics of our game.
+
+This mechanic would be used to allow the player to get around levels quickly and also be used to trick the enemies into hitting themselves with their own projectiles.
+
+we also planned to have a \"portal gun\" that allowed the player to place these portals on any surface, but sadly we didn't get that far in development."
+label_settings = SubResource("LabelSettings_cp26v")
+autowrap_mode = 2
+
+[node name="66831" type="Sprite2D" parent="."]
+position = Vector2(207, 267)
+rotation = 2.10931
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_tlr2g")
+
+[node name="66832" type="Sprite2D" parent="."]
+position = Vector2(919, 385)
+rotation = 0.801836
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_tlr2g")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1216.0
+offset_top = 158.0
+offset_right = 1488.0
+offset_bottom = 195.0
+text = "Press \"ESC\" to return to Main Menu"
+label_settings = SubResource("LabelSettings_x6bkg")
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="body_entered" from="Leftport" to="Leftport/CollisionShape2D" method="_on_leftport_body_entered"]
 [connection signal="body_entered" from="Rightport" to="Rightport/CollisionShape2D" method="_on_rightport_body_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

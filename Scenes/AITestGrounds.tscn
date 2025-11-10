@@ -1,15 +1,68 @@
-[gd_scene load_steps=10 format=3 uid="uid://tfqmotmckh3o"]
+[gd_scene load_steps=25 format=3 uid="uid://tfqmotmckh3o"]
 
-[ext_resource type="Texture2D" uid="uid://b1dycvt76lblu" path="res://icon.svg" id="1_g2gs5"]
+[ext_resource type="Script" path="res://Scripts/ai_test_grounds_script.gd" id="1_8dktj"]
+[ext_resource type="Texture2D" uid="uid://dlgp2etfuscoi" path="res://Background/LevelA2.jpg" id="1_j0fwq"]
 [ext_resource type="PackedScene" uid="uid://ct3wrf4v06xlx" path="res://Player/player.tscn" id="2_g4v33"]
+[ext_resource type="Texture2D" uid="uid://d3ugvcepbahco" path="res://Background/LevelA1.jpg" id="2_obnr6"]
 [ext_resource type="PackedScene" uid="uid://6w5y140251fa" path="res://NPCs/Enemy2.tscn" id="3_chsjh"]
 [ext_resource type="PackedScene" uid="uid://clw17rawom0tb" path="res://NPCs/Enemy3.tscn" id="3_pns8k"]
+[ext_resource type="Texture2D" uid="uid://dcv6mwe3nvjg7" path="res://Background/LevelA3.jpg" id="3_xnib8"]
+[ext_resource type="Texture2D" uid="uid://cp7px3ig5mg33" path="res://Background/LevelA4.jpg" id="4_33o1c"]
+[ext_resource type="Texture2D" uid="uid://c6m5gebq5fbbv" path="res://Background/LevelA5.jpg" id="5_d8qyx"]
 [ext_resource type="PackedScene" uid="uid://cuq0ca686uv0l" path="res://NPCs/Enemy.tscn" id="5_d67pd"]
+[ext_resource type="Texture2D" uid="uid://cbkaw23fs5h4k" path="res://Background/LevelA6.jpg" id="6_3wsco"]
+[ext_resource type="Texture2D" uid="uid://bbp8pl33lbtyh" path="res://Background/LevelA7.jpg" id="7_bpo6o"]
+[ext_resource type="Texture2D" uid="uid://ds22g3v6j4to6" path="res://Background/LevelA8.jpg" id="8_pjdjd"]
+[ext_resource type="Texture2D" uid="uid://d20t5uepe6jr1" path="res://Background/LevelA9.jpg" id="9_c3ypd"]
+[ext_resource type="Texture2D" uid="uid://co4xyckhmyaxc" path="res://Background/LevelA10.jpg" id="10_o7vnd"]
+[ext_resource type="Texture2D" uid="uid://bi7g8yfmovepo" path="res://Background/LevelA11.jpg" id="11_vv4gn"]
+[ext_resource type="FontFile" uid="uid://2ui370r1f7kx" path="res://Fonts/soloist1.ttf" id="17_6wp1h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjmht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_obnr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_j0fwq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xnib8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_33o1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d8qyx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3wsco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bpo6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pjdjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_c3ypd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_o7vnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vv4gn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_i0qel"]
-vertices = PackedVector2Array(1494.21, 867.938, 1895.09, 1052.02, 24.0469, 1056.97, 775.289, 872.063, 1901.9, 339.039, 1485.79, 473.961, 714.258, 344.039, 763.703, 477.039, 709.727, 172.063, 438.617, 287, 428.422, 117.031, 29.9375, 21.0078, 1895.06, 22.9766, 1895.93, 165.047, 131.203, 115.961, 127.797, 287)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 6, 9, 10), PackedInt32Array(11, 12, 13, 8, 10), PackedInt32Array(11, 10, 14), PackedInt32Array(2, 11, 14, 15), PackedInt32Array(7, 3, 2, 15, 9, 6)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(20, 11, 1905, 13, 1906, 175, 720, 182, 724, 334, 1912, 329, 1905, 1062, 14, 1067), PackedVector2Array(141, 126, 138, 277, 428, 277, 419, 127), PackedVector2Array(774, 487, 785, 862, 1484, 858, 1476, 484)])
+vertices = PackedVector2Array(1278, 606.789, 1838.15, 618.789, 1844.83, 1023.95, 495, 1018.04, 495, 722.219, 39.0234, 435.008, 39.9688, 23.0234, 1497.86, 25.9688, 1492.86, 393, 737.078, 436.008, 1647.83, 25.0391, 1846.88, 25.9531, 1842.1, 461.938, 1641.84, 393, 1278, 458.953, 735.922, 578, 42, 578, 342.258, 718.781, 42, 1023.03, 334.25, 1023.96)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(8, 13, 12, 14, 9), PackedInt32Array(15, 9, 14, 0), PackedInt32Array(16, 15, 0, 4, 17), PackedInt32Array(18, 16, 17, 19)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(30, 13, 29, 445, 727, 446, 726, 568, 32, 568, 32, 1033, 344, 1034, 352, 729, 485, 732, 485, 1028, 1855, 1034, 1848, 609, 1288, 597, 1288, 469, 1852, 472, 1857, 16, 1638, 15, 1632, 383, 1503, 383, 1508, 16)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egk5i"]
 size = Vector2(55.0056, 20)
@@ -18,9 +71,28 @@ size = Vector2(55.0056, 20)
 size = Vector2(20, 1080.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcfyn"]
-size = Vector2(128, 128)
+size = Vector2(18.7782, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7nmp"]
+font = ExtResource("17_6wp1h")
+
+[sub_resource type="LabelSettings" id="LabelSettings_daict"]
+font = ExtResource("17_6wp1h")
+font_size = 25
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_8dktj")
+
+[node name="LevelA2" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("1_j0fwq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(960, 540)
+sprite_frames = SubResource("SpriteFrames_pjmht")
+autoplay = "default"
+frame_progress = 0.354367
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_i0qel")
@@ -36,53 +108,81 @@ scale = Vector2(35.64, 1)
 shape = SubResource("RectangleShape2D_egk5i")
 
 [node name="EastWall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2028, 466)
+position = Vector2(1982, 467)
 shape = SubResource("RectangleShape2D_i6s0x")
 
 [node name="SouthWall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1058, 1016)
+position = Vector2(1062, 988)
 scale = Vector2(35.64, 1)
 shape = SubResource("RectangleShape2D_egk5i")
 
 [node name="WestWall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(88, 465.75)
+position = Vector2(108, 468)
 shape = SubResource("RectangleShape2D_i6s0x")
 
 [node name="TempBox" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(382, 130)
-scale = Vector2(2, 1)
+position = Vector2(336, 433)
+scale = Vector2(50.8, 0.72)
 shape = SubResource("RectangleShape2D_dcfyn")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D/TempBox"]
-texture = ExtResource("1_g2gs5")
+[node name="TempBox4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1885, 465)
+scale = Vector2(50.8, 0.72)
+shape = SubResource("RectangleShape2D_dcfyn")
 
 [node name="TempBox2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1221, 596)
+position = Vector2(513, 845)
 scale = Vector2(5.24083, 2.65521)
 shape = SubResource("RectangleShape2D_dcfyn")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D/TempBox2"]
-texture = ExtResource("1_g2gs5")
-
 [node name="TempBox3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1444, 182)
-scale = Vector2(9.55917, 0.992059)
+position = Vector2(1671, 32)
+scale = Vector2(4.8752, 4.06127)
 shape = SubResource("RectangleShape2D_dcfyn")
 
-[node name="Icon" type="Sprite2D" parent="StaticBody2D/TempBox3"]
-texture = ExtResource("1_g2gs5")
-
 [node name="Player" parent="." instance=ExtResource("2_g4v33")]
-position = Vector2(73, 74)
+position = Vector2(789, 399)
 
 [node name="Enemy-Shotgun" parent="." instance=ExtResource("3_chsjh")]
-position = Vector2(488, 960)
+position = Vector2(177, 892)
 player_path = NodePath("../Player")
 
 [node name="Enemy-Sniper" parent="." instance=ExtResource("3_pns8k")]
-position = Vector2(1656, 96)
+position = Vector2(1749, 127)
 player_path = NodePath("../Player")
 
 [node name="Enemy-Gatlin" parent="." instance=ExtResource("5_d67pd")]
-position = Vector2(1684, 560)
+position = Vector2(1594, 905)
 player_path = NodePath("../Player")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1176.0
+offset_top = 42.0
+offset_right = 1474.0
+offset_bottom = 147.0
+text = "Click Here to see The Art Showcase"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1195.0
+offset_top = 155.0
+offset_right = 1467.0
+offset_bottom = 192.0
+text = "Press \"ESC\" to return to Main Menu"
+label_settings = SubResource("LabelSettings_a7nmp")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 42.0
+offset_top = 18.0
+offset_right = 759.0
+offset_bottom = 483.0
+text = "This Scene shows the enemy AI and their pathfinding.
+
+we have 3 enemy types in this game that all have different attacks.
+
+the red line you can see is a debug feature that shows the enemie's pathfinding."
+label_settings = SubResource("LabelSettings_daict")
+autowrap_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

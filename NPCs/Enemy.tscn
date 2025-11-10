@@ -196,8 +196,10 @@ position = Vector2(1180, 40)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2cahx")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)
