@@ -92,7 +92,7 @@ modulate = Color(1, 1, 1, 0.403922)
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_pjmht")
 autoplay = "default"
-frame_progress = 0.354367
+frame_progress = 0.778178
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_i0qel")
@@ -181,7 +181,10 @@ text = "This Scene shows the enemy AI and their pathfinding.
 
 we have 3 enemy types in this game that all have different attacks.
 
-the red line you can see is a debug feature that shows the enemie's pathfinding."
+the red line you can see is a debug feature that shows the enemie's pathfinding.
+
+the only way to defeat enemies is to trick them into shooting either themselves or their buddies.
+the \"portal gun\" would be used to make this easier."
 label_settings = SubResource("LabelSettings_daict")
 autowrap_mode = 2
 

@@ -34,7 +34,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yk6nw"]
@@ -62,10 +62,10 @@ position = Vector2(960, 540)
 texture = ExtResource("2_d1ftk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0.403922)
 position = Vector2(960, 540)
 sprite_frames = SubResource("SpriteFrames_nkno4")
-frame_progress = 0.042371
+frame_progress = 0.252473
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
