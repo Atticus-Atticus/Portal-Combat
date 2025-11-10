@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7lfvem43lnqn"]
+[gd_scene load_steps=14 format=3 uid="uid://7lfvem43lnqn"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_script.gd" id="1_afyk0"]
 [ext_resource type="Texture2D" uid="uid://i1hu3ne17axc" path="res://Background/back1.png" id="2_d1ftk"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://2ui370r1f7kx" path="res://Fonts/soloist1.ttf" id="8_a78v2"]
 [ext_resource type="Texture2D" uid="uid://ci3jo6l51unsn" path="res://Sprites/startB.png" id="9_h1eji"]
 [ext_resource type="Texture2D" uid="uid://352uts27vg2p" path="res://Sprites/quitB.png" id="10_73gca"]
+[ext_resource type="Texture2D" uid="uid://f8m4sh0kchmd" path="res://Concept Art/200px-Portal_Cake.png" id="11_012o7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nkno4"]
 animations = [{
@@ -102,6 +103,21 @@ offset_right = 1962.0
 offset_bottom = 1259.0
 scale = Vector2(0.3, 0.3)
 texture_normal = ExtResource("10_73gca")
+
+[node name="200Px-portalCake" type="Sprite2D" parent="."]
+position = Vector2(54, 1052)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_012o7")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 979.0
+offset_right = 129.0
+offset_bottom = 1030.0
+rotation = 0.156483
+text = "The cake
+ is a lie!"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
